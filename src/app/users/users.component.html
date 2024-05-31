@@ -1,0 +1,74 @@
+<form action="" name="form">
+  <label for="sortBy">sort by:</label>
+  <select id="sortBy" name="what" [(ngModel)]="sortBy">
+    <option value="age">Age</option>
+    <option value="experienceYears">Experience</option>
+    <option value="firstName">First Name</option>
+    <option value="lastName">Last Name</option>
+  </select>
+  <label for="direction">Direction</label>
+  <select
+    name="way"
+    id="way"
+    [(ngModel)]="direction"
+    (ngModelChange)="onFormChange()"
+  >
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</form>
+
+<table>
+  <caption>
+    users
+  </caption>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>lastname</th>
+      <th>age</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    @switch (sortBy) { @case ('age') { @for (user of users|sortByAge:direction;
+    track $index) {
+    <tr>
+      <th>{{ user.firstName }}</th>
+
+      <td>
+        {{ user.lastName }}
+      </td>
+      <td>
+        {{ user.age }}
+      </td>
+      <td>{{ user.experienceYears }}</td>
+    </tr>
+    } } @case ('experienceYears') { @for (user of users|sortByExp:direction;
+    track $index) {
+    <tr>
+      <th>{{ user.firstName }}</th>
+
+      <td>
+        {{ user.lastName }}
+      </td>
+      <td>
+        {{ user.age }}
+      </td>
+      <td>{{ user.experienceYears }}</td>
+    </tr>
+    } } @default {@for (user of users; track $index) {
+    <tr>
+      <th>{{ user.firstName }}</th>
+
+      <td>
+        {{ user.lastName }}
+      </td>
+      <td>
+        {{ user.age }}
+      </td>
+      <td>{{ user.experienceYears }}</td>
+    </tr>
+    } } }
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+form,table{
+    margin: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+label{
+    margin-left: 5px;
+}
+caption{
+    border: 2px solid green;
+}
+th{
+    border:2px solid palevioletred;
+}
+td{
+    border: 2px solid blue;
+}
